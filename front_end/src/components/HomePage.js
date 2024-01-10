@@ -1,101 +1,35 @@
+import {Header} from "./Header";
+import {Footer} from "./Footer";
+import {Carousel} from "./Carousel";
+
 export function HomePage() {
 
     return (
         <>
+            <Header/>
+            <Carousel/>
             <section className="" style={{backgroundColor: "#eee"}}>
                 <div className="text-center container py-5">
                     <h4 className="mt-4 mb-5">
-                        <strong>Bestsellers</strong>
+                        <strong>Bán chạy nhất</strong>
                     </h4>
                     <div className="row">
-                        <div className="col-lg-4 col-md-12 mb-4">
+                        <div className="col-lg-4 col-md-6 mb-4">
                             <div className="card">
                                 <div
-                                    className="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                    className="bg-image hover-zoom ripple"
                                     data-mdb-ripple-color="light"
                                 >
                                     <img
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/belt.webp"
+                                        src="https://down-vn.img.susercontent.com/file/cc300da7ad4e4951ae168a9d3551ffe3"
                                         className="w-100"
                                     />
-                                    <a href="#!">
+                                    <a href="/product-detail">
                                         <div className="mask">
                                             <div className="d-flex justify-content-start align-items-end h-100">
                                                 <h5>
                                                     <span className="badge bg-primary ms-2">New</span>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                        <div className="hover-overlay">
-                                            <div
-                                                className="mask"
-                                                style={{backgroundColor: "rgba(251, 251, 251, 0.15)"}}
-                                            />
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className="card-body">
-                                    <a href="" className="text-reset">
-                                        <h5 className="card-title mb-3">Product name</h5>
-                                    </a>
-                                    <a href="" className="text-reset">
-                                        <p>Category</p>
-                                    </a>
-                                    <h6 className="mb-3">$61.99</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 mb-4">
-                            <div className="card">
-                                <div
-                                    className="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                                    data-mdb-ripple-color="light"
-                                >
-                                    <img
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/img%20(4).webp"
-                                        className="w-100"
-                                    />
-                                    <a href="#!">
-                                        <div className="mask">
-                                            <div className="d-flex justify-content-start align-items-end h-100">
-                                                <h5>
-                                                    <span className="badge bg-success ms-2">Eco</span>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                        <div className="hover-overlay">
-                                            <div
-                                                className="mask"
-                                                style={{backgroundColor: "rgba(251, 251, 251, 0.15)"}}
-                                            />
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className="card-body">
-                                    <a href="" className="text-reset">
-                                        <h5 className="card-title mb-3">Product name</h5>
-                                    </a>
-                                    <a href="" className="text-reset">
-                                        <p>Category</p>
-                                    </a>
-                                    <h6 className="mb-3">$61.99</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 mb-4">
-                            <div className="card">
-                                <div
-                                    className="bg-image hover-zoom ripple"
-                                    data-mdb-ripple-color="light"
-                                >
-                                    <img
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/shoes%20(3).webp"
-                                        className="w-100"
-                                    />
-                                    <a href="#!">
-                                        <div className="mask">
-                                            <div className="d-flex justify-content-start align-items-end h-100">
-                                                <h5>
+                                                    {/*<span className="badge bg-success ms-2">Eco</span>*/}
                                                     <span className="badge bg-danger ms-2">-10%</span>
                                                 </h5>
                                             </div>
@@ -108,153 +42,372 @@ export function HomePage() {
                                         </div>
                                     </a>
                                 </div>
-                                <div className="card-body">
-                                    <a href="" className="text-reset">
-                                        <h5 className="card-title mb-3">Product name</h5>
-                                    </a>
-                                    <a href="" className="text-reset">
-                                        <p>Category</p>
-                                    </a>
-                                    <h6 className="mb-3">
-                                        <s>$61.99</s>
-                                        <strong className="ms-2 text-danger">$50.99</strong>
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-4 col-md-12 mb-4">
-                            <div className="card">
-                                <div
-                                    className="bg-image hover-zoom ripple"
-                                    data-mdb-ripple-color="light"
-                                >
-                                    <img
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/img%20(23).webp"
-                                        className="w-100"
-                                    />
-                                    <a href="#!">
-                                        <div className="mask">
-                                            <div className="d-flex justify-content-start align-items-end h-100">
-                                                <h5>
-                                                    <span className="badge bg-success ms-2">Eco</span>
-                                                    <span className="badge bg-danger ms-2">-10%</span>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                        <div className="hover-overlay">
-                                            <div
-                                                className="mask"
-                                                style={{backgroundColor: "rgba(251, 251, 251, 0.15)"}}
-                                            />
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className="card-body">
-                                    <a href="" className="text-reset">
-                                        <h5 className="card-title mb-3">Product name</h5>
-                                    </a>
-                                    <a href="" className="text-reset">
-                                        <p>Category</p>
-                                    </a>
-                                    <h6 className="mb-3">
-                                        <s>$61.99</s>
-                                        <strong className="ms-2 text-danger">$50.99</strong>
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 mb-4">
-                            <div className="card">
-                                <div
-                                    className="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                                    data-mdb-ripple-color="light"
-                                >
-                                    <img
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/img%20(17).webp"
-                                        className="w-100"
-                                    />
-                                    <a href="#!">
-                                        <div className="mask">
-                                            <div className="d-flex justify-content-start align-items-end h-100"/>
-                                        </div>
-                                        <div className="hover-overlay">
-                                            <div
-                                                className="mask"
-                                                style={{backgroundColor: "rgba(251, 251, 251, 0.15)"}}
-                                            />
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className="card-body">
-                                    <a href="" className="text-reset">
-                                        <h5 className="card-title mb-3">Product name</h5>
-                                    </a>
-                                    <a href="" className="text-reset">
-                                        <p>Category</p>
-                                    </a>
-                                    <h6 className="mb-3">$61.99</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 mb-4">
-                            <div className="card">
-                                <div
-                                    className="bg-image hover-zoom ripple"
-                                    data-mdb-ripple-color="light"
-                                >
-                                    <img
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/img%20(30).webp"
-                                        className="w-100"
-                                    />
-                                    <a href="#!">
-                                        <div className="mask">
-                                            <div className="d-flex justify-content-start align-items-end h-100">
-                                                <h5>
-                                                    <span className="badge bg-primary ms-2">New</span>
-                                                    <span className="badge bg-success ms-2">Eco</span>
-                                                    <span className="badge bg-danger ms-2">-10%</span>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                        <div className="hover-overlay">
-                                            <div
-                                                className="mask"
-                                                style={{backgroundColor: "rgba(251, 251, 251, 0.15)"}}
-                                            />
-                                        </div>
-                                    </a>
-                                </div>
-                                {/*                    <div class="card-body">*/}
-                                {/*                        <a href="" class="text-reset">*/}
-                                {/*                            <h5 class="card-title mb-3">Product name</h5>*/}
-                                {/*                        </a>*/}
-                                {/*                        <a href="" class="text-reset">*/}
-                                {/*                            <p>Category</p>*/}
-                                {/*                        </a>*/}
-                                {/*                        <h6 class="mb-3">*/}
-                                {/*                            <s>$61.99</s><strong class="ms-2 text-danger">$50.99</strong>*/}
-                                {/*                        </h6>*/}
-                                {/*                    </div>*/}
                                 <div className="card-body">
                                     <div className="d-flex justify-content-between">
                                         <p className="small">
-                                            <a href="#!" className="text-muted">
-                                                Laptops
+                                            <a href="/product-detail" className="text-muted">
+                                                Cần câu tay
                                             </a>
                                         </p>
                                         <p className="small text-danger">
-                                            <s>$1399</s>
+                                            <s>100.000</s>
                                         </p>
                                     </div>
                                     <div className="d-flex justify-content-between mb-3">
-                                        <h5 className="mb-0">Toshiba B77</h5>
-                                        <h5 className="text-dark mb-0">$1299</h5>
+                                        <h5 className="mb-0">SHIMANO</h5>
+                                        <h5 className="text-dark mb-0">90.000</h5>
                                     </div>
                                     <div className="d-flex justify-content-between mb-2">
                                         <p className="text-muted mb-0">
-                                            Available: <span className="fw-bold">5</span>
+                                            Sản phẩm có sẵn: <span className="fw-bold">5</span>
+                                        </p>
+                                        <div className="ms-auto text-warning">
+                                            <i className="fa fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star-half-alt"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 mb-4">
+                            <div className="card">
+                                <div
+                                    className="bg-image hover-zoom ripple"
+                                    data-mdb-ripple-color="light"
+                                >
+                                    <img
+                                        src="https://down-vn.img.susercontent.com/file/cc300da7ad4e4951ae168a9d3551ffe3"
+                                        className="w-100"
+                                    />
+                                    <a href="/product-detail">
+                                        <div className="mask">
+                                            <div className="d-flex justify-content-start align-items-end h-100">
+                                                <h5>
+                                                    <span className="badge bg-primary ms-2">New</span>
+                                                    {/*<span className="badge bg-success ms-2">Eco</span>*/}
+                                                    <span className="badge bg-danger ms-2">-10%</span>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div className="hover-overlay">
+                                            <div
+                                                className="mask"
+                                                style={{backgroundColor: "rgba(251, 251, 251, 0.15)"}}
+                                            />
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-body">
+                                    <div className="d-flex justify-content-between">
+                                        <p className="small">
+                                            <a href="/product-detail" className="text-muted">
+                                                Cần câu tay
+                                            </a>
+                                        </p>
+                                        <p className="small text-danger">
+                                            <s>100.000</s>
+                                        </p>
+                                    </div>
+                                    <div className="d-flex justify-content-between mb-3">
+                                        <h5 className="mb-0">SHIMANO</h5>
+                                        <h5 className="text-dark mb-0">90.000</h5>
+                                    </div>
+                                    <div className="d-flex justify-content-between mb-2">
+                                        <p className="text-muted mb-0">
+                                            Sản phẩm có sẵn: <span className="fw-bold">5</span>
+                                        </p>
+                                        <div className="ms-auto text-warning">
+                                            <i className="fa fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star-half-alt"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 mb-4">
+                            <div className="card">
+                                <div
+                                    className="bg-image hover-zoom ripple"
+                                    data-mdb-ripple-color="light"
+                                >
+                                    <img
+                                        src="https://down-vn.img.susercontent.com/file/cc300da7ad4e4951ae168a9d3551ffe3"
+                                        className="w-100"
+                                    />
+                                    <a href="/product-detail">
+                                        <div className="mask">
+                                            <div className="d-flex justify-content-start align-items-end h-100">
+                                                <h5>
+                                                    <span className="badge bg-primary ms-2">New</span>
+                                                    {/*<span className="badge bg-success ms-2">Eco</span>*/}
+                                                    <span className="badge bg-danger ms-2">-10%</span>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div className="hover-overlay">
+                                            <div
+                                                className="mask"
+                                                style={{backgroundColor: "rgba(251, 251, 251, 0.15)"}}
+                                            />
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-body">
+                                    <div className="d-flex justify-content-between">
+                                        <p className="small">
+                                            <a href="/product-detail" className="text-muted">
+                                                Cần câu tay
+                                            </a>
+                                        </p>
+                                        <p className="small text-danger">
+                                            <s>100.000</s>
+                                        </p>
+                                    </div>
+                                    <div className="d-flex justify-content-between mb-3">
+                                        <h5 className="mb-0">SHIMANO</h5>
+                                        <h5 className="text-dark mb-0">90.000</h5>
+                                    </div>
+                                    <div className="d-flex justify-content-between mb-2">
+                                        <p className="text-muted mb-0">
+                                            Sản phẩm có sẵn: <span className="fw-bold">5</span>
+                                        </p>
+                                        <div className="ms-auto text-warning">
+                                            <i className="fa fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star-half-alt"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 mb-4">
+                            <div className="card">
+                                <div
+                                    className="bg-image hover-zoom ripple"
+                                    data-mdb-ripple-color="light"
+                                >
+                                    <img
+                                        src="https://down-vn.img.susercontent.com/file/cc300da7ad4e4951ae168a9d3551ffe3"
+                                        className="w-100"
+                                    />
+                                    <a href="/product-detail">
+                                        <div className="mask">
+                                            <div className="d-flex justify-content-start align-items-end h-100">
+                                                <h5>
+                                                    <span className="badge bg-primary ms-2">New</span>
+                                                    {/*<span className="badge bg-success ms-2">Eco</span>*/}
+                                                    <span className="badge bg-danger ms-2">-10%</span>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div className="hover-overlay">
+                                            <div
+                                                className="mask"
+                                                style={{backgroundColor: "rgba(251, 251, 251, 0.15)"}}
+                                            />
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-body">
+                                    <div className="d-flex justify-content-between">
+                                        <p className="small">
+                                            <a href="/product-detail" className="text-muted">
+                                                Cần câu tay
+                                            </a>
+                                        </p>
+                                        <p className="small text-danger">
+                                            <s>100.000</s>
+                                        </p>
+                                    </div>
+                                    <div className="d-flex justify-content-between mb-3">
+                                        <h5 className="mb-0">SHIMANO</h5>
+                                        <h5 className="text-dark mb-0">90.000</h5>
+                                    </div>
+                                    <div className="d-flex justify-content-between mb-2">
+                                        <p className="text-muted mb-0">
+                                            Sản phẩm có sẵn: <span className="fw-bold">5</span>
+                                        </p>
+                                        <div className="ms-auto text-warning">
+                                            <i className="fa fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star-half-alt"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 mb-4">
+                            <div className="card">
+                                <div
+                                    className="bg-image hover-zoom ripple"
+                                    data-mdb-ripple-color="light"
+                                >
+                                    <img
+                                        src="https://down-vn.img.susercontent.com/file/cc300da7ad4e4951ae168a9d3551ffe3"
+                                        className="w-100"
+                                    />
+                                    <a href="/product-detail">
+                                        <div className="mask">
+                                            <div className="d-flex justify-content-start align-items-end h-100">
+                                                <h5>
+                                                    <span className="badge bg-primary ms-2">New</span>
+                                                    {/*<span className="badge bg-success ms-2">Eco</span>*/}
+                                                    <span className="badge bg-danger ms-2">-10%</span>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div className="hover-overlay">
+                                            <div
+                                                className="mask"
+                                                style={{backgroundColor: "rgba(251, 251, 251, 0.15)"}}
+                                            />
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-body">
+                                    <div className="d-flex justify-content-between">
+                                        <p className="small">
+                                            <a href="/product-detail" className="text-muted">
+                                                Cần câu tay
+                                            </a>
+                                        </p>
+                                        <p className="small text-danger">
+                                            <s>100.000</s>
+                                        </p>
+                                    </div>
+                                    <div className="d-flex justify-content-between mb-3">
+                                        <h5 className="mb-0">SHIMANO</h5>
+                                        <h5 className="text-dark mb-0">90.000</h5>
+                                    </div>
+                                    <div className="d-flex justify-content-between mb-2">
+                                        <p className="text-muted mb-0">
+                                            Sản phẩm có sẵn: <span className="fw-bold">5</span>
+                                        </p>
+                                        <div className="ms-auto text-warning">
+                                            <i className="fa fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star-half-alt"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 mb-4">
+                            <div className="card">
+                                <div
+                                    className="bg-image hover-zoom ripple"
+                                    data-mdb-ripple-color="light"
+                                >
+                                    <img
+                                        src="https://down-vn.img.susercontent.com/file/cc300da7ad4e4951ae168a9d3551ffe3"
+                                        className="w-100"
+                                    />
+                                    <a href="/product-detail">
+                                        <div className="mask">
+                                            <div className="d-flex justify-content-start align-items-end h-100">
+                                                <h5>
+                                                    <span className="badge bg-primary ms-2">New</span>
+                                                    {/*<span className="badge bg-success ms-2">Eco</span>*/}
+                                                    <span className="badge bg-danger ms-2">-10%</span>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div className="hover-overlay">
+                                            <div
+                                                className="mask"
+                                                style={{backgroundColor: "rgba(251, 251, 251, 0.15)"}}
+                                            />
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-body">
+                                    <div className="d-flex justify-content-between">
+                                        <p className="small">
+                                            <a href="/product-detail" className="text-muted">
+                                                Cần câu tay
+                                            </a>
+                                        </p>
+                                        <p className="small text-danger">
+                                            <s>100.000</s>
+                                        </p>
+                                    </div>
+                                    <div className="d-flex justify-content-between mb-3">
+                                        <h5 className="mb-0">SHIMANO</h5>
+                                        <h5 className="text-dark mb-0">90.000</h5>
+                                    </div>
+                                    <div className="d-flex justify-content-between mb-2">
+                                        <p className="text-muted mb-0">
+                                            Sản phẩm có sẵn: <span className="fw-bold">5</span>
+                                        </p>
+                                        <div className="ms-auto text-warning">
+                                            <i className="fa fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star"/>
+                                            <i className="fas fa-star-half-alt"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 mb-4">
+                            <div className="card">
+                                <div
+                                    className="bg-image hover-zoom ripple"
+                                    data-mdb-ripple-color="light"
+                                >
+                                    <img
+                                        src="https://down-vn.img.susercontent.com/file/cc300da7ad4e4951ae168a9d3551ffe3"
+                                        className="w-100"
+                                    />
+                                    <a href="/product-detail">
+                                        <div className="mask">
+                                            <div className="d-flex justify-content-start align-items-end h-100">
+                                                <h5>
+                                                    <span className="badge bg-primary ms-2">New</span>
+                                                    {/*<span className="badge bg-success ms-2">Eco</span>*/}
+                                                    <span className="badge bg-danger ms-2">-10%</span>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div className="hover-overlay">
+                                            <div
+                                                className="mask"
+                                                style={{backgroundColor: "rgba(251, 251, 251, 0.15)"}}
+                                            />
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="card-body">
+                                    <div className="d-flex justify-content-between">
+                                        <p className="small">
+                                            <a href="/product-detail" className="text-muted">
+                                                Cần câu tay
+                                            </a>
+                                        </p>
+                                        <p className="small text-danger">
+                                            <s>100.000</s>
+                                        </p>
+                                    </div>
+                                    <div className="d-flex justify-content-between mb-3">
+                                        <h5 className="mb-0">SHIMANO</h5>
+                                        <h5 className="text-dark mb-0">90.000</h5>
+                                    </div>
+                                    <div className="d-flex justify-content-between mb-2">
+                                        <p className="text-muted mb-0">
+                                            Sản phẩm có sẵn: <span className="fw-bold">5</span>
                                         </p>
                                         <div className="ms-auto text-warning">
                                             <i className="fa fa-star"/>
@@ -270,6 +423,7 @@ export function HomePage() {
                     </div>
                 </div>
             </section>
+            <Footer/>
         </>
     )
 }

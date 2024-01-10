@@ -1,14 +1,18 @@
+import {Footer} from "./Footer";
+import {Header} from "./Header";
+
 export  function Cart(){
 
     return(
         <>
+            <Header/>
             <section className="h-100 gradient-custom">
                 <div className="container py-5">
                     <div className="row d-flex justify-content-center my-4">
                         <div className="col-md-8">
                             <div className="card mb-4">
                                 <div className="card-header py-3">
-                                    <h5 className="mb-0">Cart - 2 items</h5>
+                                    <h5 className="mb-0">Giỏ hàng - 2 sản phẩm</h5>
                                 </div>
                                 <div className="card-body">
                                     {/* Single item */}
@@ -20,11 +24,11 @@ export  function Cart(){
                                                 data-mdb-ripple-color="light"
                                             >
                                                 <img
-                                                    src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp"
+                                                    src="https://down-vn.img.susercontent.com/file/cc300da7ad4e4951ae168a9d3551ffe3"
                                                     className="w-100"
-                                                    alt="Blue Jeans Jacket"
+                                                    alt="can-cau-tay"
                                                 />
-                                                <a href="#!">
+                                                <a href="/product-detail">
                                                     <div
                                                         className="mask"
                                                         style={{ backgroundColor: "rgba(251, 251, 251, 0.2)" }}
@@ -36,10 +40,10 @@ export  function Cart(){
                                         <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                             {/* Data */}
                                             <p>
-                                                <strong>Blue denim shirt</strong>
+                                                <strong>Cần câu tay SHIMANO</strong>
                                             </p>
-                                            <p>Color: blue</p>
-                                            <p>Size: M</p>
+                                            <p>Màu sắc: Đen</p>
+                                            <p>Kích thước: 2M7</p>
                                             <button
                                                 type="button"
                                                 className="btn btn-primary btn-sm me-1 mb-2"
@@ -88,7 +92,7 @@ export  function Cart(){
                                             {/* Quantity */}
                                             {/* Price */}
                                             <p className="text-start text-md-center">
-                                                <strong>$17.99</strong>
+                                                <strong>90.000</strong>
                                             </p>
                                             {/* Price */}
                                         </div>
@@ -104,10 +108,11 @@ export  function Cart(){
                                                 data-mdb-ripple-color="light"
                                             >
                                                 <img
-                                                    src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/13a.webp"
+                                                    src="https://down-vn.img.susercontent.com/file/cc300da7ad4e4951ae168a9d3551ffe3"
                                                     className="w-100"
+                                                    alt="can-cau-tay"
                                                 />
-                                                <a href="#!">
+                                                <a href="/product-detail">
                                                     <div
                                                         className="mask"
                                                         style={{ backgroundColor: "rgba(251, 251, 251, 0.2)" }}
@@ -119,10 +124,10 @@ export  function Cart(){
                                         <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                             {/* Data */}
                                             <p>
-                                                <strong>Red hoodie</strong>
+                                                <strong>Cần câu tay SHIMANO</strong>
                                             </p>
-                                            <p>Color: red</p>
-                                            <p>Size: M</p>
+                                            <p>Màu sắc: Đen</p>
+                                            <p>Kích thước: 3M6</p>
                                             <button
                                                 type="button"
                                                 className="btn btn-primary btn-sm me-1 mb-2"
@@ -146,24 +151,24 @@ export  function Cart(){
                                             <div className="d-flex mb-4" style={{ maxWidth: 300 }}>
                                                 <button
                                                     className="btn btn-primary px-3 me-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                                    onClick="this.parentNode.querySelector('input[type=number]').stepDown()"
                                                 >
                                                     <i className="fas fa-minus" />
                                                 </button>
                                                 <div className="form-outline">
                                                     <input
-                                                        id="form2"
+                                                        id="form1"
                                                         min={0}
                                                         name="quantity"
                                                         defaultValue={1}
                                                         type="number"
                                                         className="form-control"
                                                     />
-                                                    {/*                                        <label class="form-label" for="form2">Quantity</label>*/}
+                                                    {/*                                        <label class="form-label" for="form1">Quantity</label>*/}
                                                 </div>
                                                 <button
                                                     className="btn btn-primary px-3 ms-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                    onClick="this.parentNode.querySelector('input[type=number]').stepUp()"
                                                 >
                                                     <i className="fas fa-plus" />
                                                 </button>
@@ -171,7 +176,7 @@ export  function Cart(){
                                             {/* Quantity */}
                                             {/* Price */}
                                             <p className="text-start text-md-center">
-                                                <strong>$17.99</strong>
+                                                <strong>130.000</strong>
                                             </p>
                                             {/* Price */}
                                         </div>
@@ -182,15 +187,15 @@ export  function Cart(){
                             <div className="card mb-4">
                                 <div className="card-body">
                                     <p>
-                                        <strong>Expected shipping delivery</strong>
+                                        <strong>Dự kiến giao hàng</strong>
                                     </p>
-                                    <p className="mb-0">12.10.2020 - 14.10.2020</p>
+                                    <p className="mb-0">08/01/2023 - 12/01/2023</p>
                                 </div>
                             </div>
                             <div className="card mb-4 mb-lg-0">
                                 <div className="card-body">
                                     <p>
-                                        <strong>We accept</strong>
+                                        <strong>Chúng tôi chỉ chấp nhận</strong>
                                     </p>
                                     <img
                                         className="me-2"
@@ -222,32 +227,32 @@ export  function Cart(){
                         <div className="col-md-4">
                             <div className="card mb-4">
                                 <div className="card-header py-3">
-                                    <h5 className="mb-0">Summary</h5>
+                                    <h5 className="mb-0">Thanh toán</h5>
                                 </div>
                                 <div className="card-body">
                                     <ul className="list-group list-group-flush">
                                         <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                            Products
-                                            <span>$53.98</span>
+                                            Sản phẩm
+                                            <span>220.000</span>
                                         </li>
                                         <li className="list-group-item d-flex justify-content-between align-items-center px-0">
-                                            Shipping
-                                            <span>Gratis</span>
+                                            Phí vận chuyển
+                                            <span>20.000</span>
                                         </li>
                                         <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                                             <div>
-                                                <strong>Total amount</strong>
+                                                <strong>Tổng tiền</strong>
                                                 <strong>
-                                                    <p className="mb-0">(including VAT)</p>
+                                                    <p className="mb-0">(Bao gồm thuế GTGT)</p>
                                                 </strong>
                                             </div>
                                             <span>
-                  <strong>$53.98</strong>
+                  <strong>240.000</strong>
                 </span>
                                         </li>
                                     </ul>
                                     <button type="button" className="btn btn-primary btn-lg btn-block">
-                                        Go to checkout
+                                        Đặt hàng
                                     </button>
                                 </div>
                             </div>
@@ -255,6 +260,7 @@ export  function Cart(){
                     </div>
                 </div>
             </section>
+            <Footer/>
         </>
     )
 }

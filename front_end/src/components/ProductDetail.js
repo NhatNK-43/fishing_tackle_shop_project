@@ -1,7 +1,11 @@
+import {Header} from "./Header";
+import {Footer} from "./Footer";
+
 export function ProductDetail(){
 
     return(
         <>
+            <Header/>
             <section className="py-5">
                 <div className="container">
                     <div className="row gx-5">
@@ -113,24 +117,24 @@ export function ProductDetail(){
                                     </div>
                                     <span className="text-muted">
               <i className="fas fa-shopping-basket fa-sm mx-1" />
-              154 orders
+              154 đơn đặt hàng
             </span>
-                                    <span className="text-success ms-2">In stock</span>
+                                    <span className="text-success ms-2">Còn hàng</span>
                                 </div>
                                 <div className="mb-3">
-                                    <span className="h5">$75.00</span>
-                                    <span className="text-muted">/per box</span>
+                                    <span className="h5">90.000</span>
+                                    {/*<span className="text-muted">/cần</span>*/}
                                 </div>
                                 <p>
-                                    Huandocau Là Đại Lý Phân Phối Đồ Câu Tốt Nhất Trên Thị Trường Hiện
+                                    Fishing tackle shop Là Đại Lý Phân Phối Đồ Câu Tốt Nhất Trên Thị Trường Hiện
                                     Tại.
                                     <br />
-                                    -Chúng Tôi Chuyên Cung Cấp Các Loại Đồ Câu, Ngư Cụ Với Đầy Đủ Mặt
+                                    - Chúng Tôi Chuyên Cung Cấp Các Loại Đồ Câu, Ngư Cụ Với Đầy Đủ Mặt
                                     Hàng Và Giá Cả Tốt Nhất Đến Khách Hàng.
                                     <br />
-                                    -Với Đội Ngũ Chăm Sóc Khách Hàng, Tư Vấn Nhiệt Tình.
+                                    - Với Đội Ngũ Chăm Sóc Khách Hàng, Tư Vấn Nhiệt Tình.
                                     <br />
-                                    -Chúng Tôi Tự Tin Sẽ Mang Lại Trải Nghiệm Mua Hàng Tốt Nhất Đến Mọi
+                                    - Chúng Tôi Tự Tin Sẽ Mang Lại Trải Nghiệm Mua Hàng Tốt Nhất Đến Mọi
                                     Khách Hàng!
                                     <br />
                                 </p>
@@ -155,6 +159,8 @@ export function ProductDetail(){
                                             <option>2M7</option>
                                             <option>3M6</option>
                                             <option>4M5</option>
+                                            <option>5M4</option>
+                                            <option>6M3</option>
                                         </select>
                                     </div>
                                     {/* col.// */}
@@ -187,19 +193,20 @@ export function ProductDetail(){
                                         </div>
                                     </div>
                                 </div>
+                                <a href="#" className="btn btn-primary shadow-0 me-3">
+                                    {" "}
+                                    <i className="me-1 fa fa-shopping-basket" /> Thêm vào giỏ hàng{" "}
+                                </a>
                                 <a href="#" className="btn btn-warning shadow-0">
                                     {" "}
                                     Mua ngay{" "}
-                                </a>
-                                <a href="#" className="btn btn-primary shadow-0">
-                                    {" "}
-                                    <i className="me-1 fa fa-shopping-basket" /> Thêm vào giỏ hàng{" "}
                                 </a>
                             </div>
                         </main>
                     </div>
                 </div>
             </section>
+            <Footer/>
         </>
     )
 }

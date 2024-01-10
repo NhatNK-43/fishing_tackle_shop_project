@@ -37,6 +37,10 @@ public class Product {
     @JoinColumn(name = "promotion_id", referencedColumnName = "id")
     private Promotion promotion;
 
+    @ManyToOne
+    @JoinColumn(name = "product_type_id", referencedColumnName = "id")
+    private ProductType productType;
+
     @JsonBackReference
     @OneToMany(mappedBy = "product")
     private Set<SizeDetail> sizeDetailSet;

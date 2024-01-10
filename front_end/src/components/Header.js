@@ -1,11 +1,13 @@
-export function Header(){
-    return(
+import {NavLink} from "react-router-dom";
+
+export function Header() {
+    return (
         <>
-            <header className="container">
+            <header>
                 {/* Navbar */}
-                <nav className="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+                <nav className="navbar navbar-expand-lg navbar-light bg-body-tertiary p-0">
                     {/* Container wrapper */}
-                    <div className="container-fluid">
+                    <div className="container">
                         {/* Toggle button */}
                         <button
                             data-mdb-collapse-init=""
@@ -16,15 +18,15 @@ export function Header(){
                             aria-expanded="false"
                             aria-label="Toggle navigation"
                         >
-                            <i className="fas fa-bars" />
+                            <i className="fas fa-bars"/>
                         </button>
                         {/* Collapsible wrapper */}
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div className="collapse navbar-collapse px-2" id="navbarSupportedContent">
                             {/* Navbar brand */}
                             <a className="navbar-brand mt-2 mt-lg-0" href="#">
                                 <img
-                                    src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-                                    height={15}
+                                    src="/logo_fishing.png"
+                                    height={60}
                                     alt="MDB Logo"
                                     loading="lazy"
                                 />
@@ -32,18 +34,18 @@ export function Header(){
                             {/* Left links */}
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
+                                    <NavLink to="/home" className="nav-link" href="#">
+                                        Trang chủ
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
                                     <a className="nav-link" href="#">
-                                        Dashboard
+                                        Sản phẩm
                                     </a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" href="#">
-                                        Team
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">
-                                        Projects
+                                        Về chúng tôi
                                     </a>
                                 </li>
                             </ul>
@@ -53,9 +55,9 @@ export function Header(){
                         {/* Right elements */}
                         <div className="d-flex align-items-center">
                             {/* Icon */}
-                            <a className="text-reset me-3" href="#">
-                                <i className="fas fa-shopping-cart" />
-                            </a>
+                            <NavLink to="/cart" className="text-reset me-3" href="#">
+                                <i className="fas fa-shopping-cart"/>
+                            </NavLink>
                             {/* Notifications */}
                             <div className="dropdown">
                                 <a
@@ -66,10 +68,8 @@ export function Header(){
                                     role="button"
                                     aria-expanded="false"
                                 >
-                                    <i className="fas fa-bell" />
-                                    <span className="badge rounded-pill badge-notification bg-danger">
-              1
-            </span>
+                                    <i className="fas fa-bell"/>
+                                    <span className="badge rounded-pill badge-notification bg-danger">1</span>
                                 </a>
                                 <ul
                                     className="dropdown-menu dropdown-menu-end"
@@ -77,17 +77,17 @@ export function Header(){
                                 >
                                     <li>
                                         <a className="dropdown-item" href="#">
-                                            Some news
+                                            {/*Some news*/}
                                         </a>
                                     </li>
                                     <li>
                                         <a className="dropdown-item" href="#">
-                                            Another news
+                                            {/*Another news*/}
                                         </a>
                                     </li>
                                     <li>
                                         <a className="dropdown-item" href="#">
-                                            Something else here
+                                            {/*Something else here*/}
                                         </a>
                                     </li>
                                 </ul>
@@ -115,18 +115,18 @@ export function Header(){
                                     aria-labelledby="navbarDropdownMenuAvatar"
                                 >
                                     <li>
-                                        <a className="dropdown-item" href="#">
-                                            My profile
-                                        </a>
+                                        <NavLink to="/information" className="dropdown-item" href="#">
+                                            Thông tin cá nhân
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to="/setting" className="dropdown-item" href="#">
+                                            Cài đặt
+                                        </NavLink>
                                     </li>
                                     <li>
                                         <a className="dropdown-item" href="#">
-                                            Settings
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a className="dropdown-item" href="#">
-                                            Logout
+                                            Đăng xuất
                                         </a>
                                     </li>
                                 </ul>
@@ -136,32 +136,6 @@ export function Header(){
                     </div>
                     {/* Container wrapper */}
                 </nav>
-                <div
-                    className="p-5 text-center bg-image"
-                    style={{
-                        backgroundImage:
-                            'url("https://mdbcdn.b-cdn.net/img/new/slides/041.webp")',
-                        height: 400
-                    }}
-                >
-                    <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
-                        <div className="d-flex justify-content-center align-items-center h-100">
-                            <div className="text-white">
-                                <h1 className="mb-3">Heading</h1>
-                                <h4 className="mb-3">Subheading</h4>
-                                <a
-                                    data-mdb-ripple-init=""
-                                    className="btn btn-outline-light btn-lg"
-                                    href="#!"
-                                    role="button"
-                                >
-                                    Call to action
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {/* Background image */}
             </header>
         </>
     )

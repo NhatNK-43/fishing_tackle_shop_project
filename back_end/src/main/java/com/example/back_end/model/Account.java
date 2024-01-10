@@ -1,5 +1,6 @@
 package com.example.back_end.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -29,4 +30,12 @@ public class Account {
     @JoinTable(name = "role_accounts")
     @JoinColumn(columnDefinition = "account_id", referencedColumnName = "role_id")
     private Set<Role> roleSet;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "account")
+    private Set<Order> orderSet;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "account")
+    private Set<Cart> cartSet;
 }
