@@ -1,8 +1,7 @@
-package com.example.demo_jwt.config;
+package com.example.back_end.config;
 
-import com.example.demo_jwt.security.jwt.JwtEntryPoint;
-import com.example.demo_jwt.security.jwt.JwtTokenFilter;
-import com.example.demo_jwt.security.userprincal.UserDetailService;
+import com.example.back_end.security.jwt.JwtTokenFilter;
+import com.example.back_end.security.userprincal.AccountDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +22,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class WebSecurityConfig {
     @Autowired
-    private UserDetailService userDetailService;
+    private AccountDetailService accountDetailService;
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
@@ -43,7 +42,7 @@ public class WebSecurityConfig {
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailService);
+        authProvider.setUserDetailsService(accountDetailService);
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
@@ -60,18 +59,6 @@ public class WebSecurityConfig {
 //                        Trang cần có quyền hợp lệ
 
 //                                .requestMatchers("/api/notification/list/**", "/api/notification/view", "/api/customer/**", "/api/customerType", "/api/overview/**").hasAnyRole("WAREHOUSE", "SALES", "MANAGER")
-//                                .requestMatchers("/api/notification/add/**", "/api/sales-report/**").hasRole("MANAGER")
-//                                .requestMatchers("/api/sale/**", "/api/sales/**").hasRole("SALE")
-//                                .requestMatchers("/api/product/create").hasRole("WAREHOUSE")
-//                                .requestMatchers("/api/warehouses/**").hasRole("WAREHOUSE")
-//                                .requestMatchers("/api/size-detail/**").hasRole("WAREHOUSE")
-//                                .requestMatchers("/api/sales-report/**").hasRole("MANAGER")
-//                                .requestMatchers("/api/invoices/**", "/api/sales/**").hasRole("SALE")
-//                                .requestMatchers("/api/employee/**", "/api/product/list").authenticated()
-//                                .requestMatchers("/api/product/**").authenticated()
-//                                .requestMatchers("/api/employee/**").authenticated()
-//                                .requestMatchers("/api/changePassword").authenticated()
-//                                .requestMatchers("/api/customer/**").authenticated()
 //                                .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable)

@@ -15,7 +15,7 @@ import java.util.Set;
 public class Promotion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "percent", nullable = false)
     private Double percent;

@@ -16,7 +16,7 @@ import java.util.Set;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "product_code", nullable = false, unique = true, columnDefinition = "varchar(50)")
     private String productCode;

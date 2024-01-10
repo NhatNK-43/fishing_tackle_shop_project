@@ -13,7 +13,7 @@ import lombok.Setter;
 public class SizeDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "price", nullable = false)
     private Double price;

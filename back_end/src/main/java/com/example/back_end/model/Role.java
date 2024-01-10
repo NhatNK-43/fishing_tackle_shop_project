@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.NaturalId;
 
 import java.util.Set;
 
@@ -15,10 +16,12 @@ import java.util.Set;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
+    @Enumerated(EnumType.STRING)
+    @NaturalId
     @Column(name = "name", nullable = false, unique = true, columnDefinition = "varchar(50)")
-    private String name;
+    private RoleName name;
 
     @ManyToMany(mappedBy = "roleSet")
     private Set<Account> accountSet;
