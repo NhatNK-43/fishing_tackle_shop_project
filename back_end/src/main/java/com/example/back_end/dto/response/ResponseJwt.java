@@ -7,20 +7,24 @@ import java.util.Collection;
 public class ResponseJwt {
     private String token;
     private String type = "Bearer";
-    private Collection<? extends GrantedAuthority> roles;
+//    private Collection<? extends GrantedAuthority> roles;
 
     public ResponseJwt() {
     }
 
-    public ResponseJwt(String token, String type, Collection<? extends GrantedAuthority> roles) {
-        this.token = token;
-        this.type = type;
-        this.roles = roles;
-    }
+//    public ResponseJwt(String token, String type, Collection<? extends GrantedAuthority> roles) {
+//        this.token = token;
+//        this.type = type;
+//        this.roles = roles;
+//    }
 
-    public ResponseJwt(String token, Collection<? extends GrantedAuthority> authorities) {
+//    public ResponseJwt(String token, Collection<? extends GrantedAuthority> authorities) {
+//        this.token = token;
+//        this.roles = authorities;
+//    }
+
+    public ResponseJwt(String token) {
         this.token = token;
-        this.roles = authorities;
     }
 
 
@@ -40,11 +44,11 @@ public class ResponseJwt {
         this.type = type;
     }
 
-    public Collection<? extends GrantedAuthority> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Collection<? extends GrantedAuthority> roles) {
-        this.roles = roles;
-    }
+//    public Collection<? extends GrantedAuthority> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(Collection<? extends GrantedAuthority> roles) {
+//        this.roles = roles;
+//    }
 }

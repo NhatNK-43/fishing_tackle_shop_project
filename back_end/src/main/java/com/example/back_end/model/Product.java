@@ -27,11 +27,15 @@ public class Product {
     @Column(name = "description", nullable = false, columnDefinition = "longtext")
     private String description;
 
-    @Column(name = "image", nullable = false, columnDefinition = "longtext")
-    private String image;
-
     @Column(name = "is_deleted", columnDefinition = "bit(1) default 0")
     private Boolean deleted;
+
+    @Column(name = "manufacturer")
+    private String manufacturer;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "product")
+    private Set<Image> imageSet;
 
     @ManyToOne
     @JoinColumn(name = "promotion_id", referencedColumnName = "id")

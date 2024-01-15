@@ -11,20 +11,27 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class JwtProvider {
     private static final Logger logger = (Logger) LoggerFactory.getLogger(JwtProvider.class);
-    private String jwtSecret = "khanhnhattttttttttttttttttttttttttttttttttttttttttttttttttttt";
-    private Integer jwtExpiration = 86400;
+    private String jwtSecret = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+    private Integer jwtExpiration = 86400;//seconds
 
     public String createToken(Authentication authentication) {
         AccountPrinciple accountPrinciple = (AccountPrinciple) authentication.getPrincipal();
+        // Tạo một đối tượng Map để chứa các thông tin trong phần payload của JWT
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("roles", accountPrinciple.getAuthorities());
         return Jwts.builder()
                 .setSubject(accountPrinciple.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime() + jwtExpiration * 1000))
                 .signWith(key(), SignatureAlgorithm.HS256)
+                .addClaims(claims)
+                .setHeaderParam("typ","JWT")
                 .compact();
     }
 
