@@ -8,8 +8,8 @@ public interface IProductDto {
    String getManufacturer();
    Double getPromotion();
    String getProductTypeName();
-   Double getPrice();
-   String getSizeName();
+   String getPriceSet();
+   String getSizeNameSet();
 
    String getImageSet();
 }

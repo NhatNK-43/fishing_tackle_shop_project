@@ -1,5 +1,6 @@
 package com.example.back_end.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class ProductType {
     @Column(name = "name")
     private String name;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "productType")
     private Set<Product> productSet;
 }

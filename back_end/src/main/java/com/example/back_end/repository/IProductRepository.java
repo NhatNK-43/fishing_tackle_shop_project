@@ -26,7 +26,9 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
 //                                    @Param("ltePrice") Double ltePrice,
 //                                    @Param("keyword") String keyword);
 
-    @Query(value = "select p.product_code as productCode, p.name, p.description, p.manufacturer, pt.name as productTypeName, pm.percent as promotion, group_concat(i.path_image) as imageSet\n" +
+    @Query(value = "select p.product_code as productCode, p.name, p.description, p.manufacturer, pt.name as productTypeName, " +
+            "pm.percent as promotion, group_concat(distinct i.path_image) as imageSet, group_concat(distinct sd.price) as priceSet, " +
+            "group_concat(distinct s.name) as sizeNameSet\n" +
             "from products p \n" +
             "join product_types pt on p.product_type_id = pt.id \n" +
             "join promotions pm on p.promotion_id = pm.id \n" +
@@ -36,12 +38,27 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
             "where p.is_deleted = 0\n" +
             "and pt.name like :productTypeName\n" +
             "and (sd.price between :gtePrice and :ltePrice) \n" +
-            "and (p.name like :keyword or p.manufacturer like :keyword)\n" +
+            "and (p.product_code like :keyword or p.name like :keyword or p.manufacturer like :keyword)\n" +
             "group by p.product_code",
             nativeQuery = true)
     Page<IProductDto> getPageProduct(Pageable pageable,
-                                    @Param("productTypeName") String productTypeName,
-                                    @Param("gtePrice") Double gtePrice,
-                                    @Param("ltePrice") Double ltePrice,
-                                    @Param("keyword") String keyword);
+                                     @Param("productTypeName") String productTypeName,
+                                     @Param("gtePrice") Double gtePrice,
+                                     @Param("ltePrice") Double ltePrice,
+                                     @Param("keyword") String keyword);
+
+    @Query(value = "select p.product_code as productCode, p.name, p.description, p.manufacturer, pt.name as productTypeName, \n" +
+            "pm.percent as promotion, group_concat(distinct i.path_image) as imageSet, group_concat(distinct sd.price) as priceSet, \n" +
+            "group_concat(distinct s.name) as sizeNameSet\n" +
+            "from products p \n" +
+            "join product_types pt on p.product_type_id = pt.id \n" +
+            "join promotions pm on p.promotion_id = pm.id \n" +
+            "join size_details sd on p.id = sd.product_id\n" +
+            "join sizes s on s.id = sd.size_id\n" +
+            "join images i on i.product_id = p.id\n" +
+            "where p.product_code = :productCode \n" +
+            "and p.is_deleted = 0\n" +
+            "group by p.product_code",
+            nativeQuery = true)
+    IProductDto getProductByProductCode(@Param("productCode") String productCode);
 }

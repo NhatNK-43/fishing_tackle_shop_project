@@ -7,4 +7,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface IProductService {
     Page<IProductDto> getPageProduct(Pageable pageable,String productTypeName, Double gtePrice,Double ltePrice,String keyword);
+
+    IProductDto getProductByProductCode(String productCode);
 }

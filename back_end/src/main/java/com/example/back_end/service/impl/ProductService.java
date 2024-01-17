@@ -21,4 +21,13 @@ public class ProductService implements IProductService {
             return null;
         }
     }
+
+    @Override
+    public IProductDto getProductByProductCode(String productCode) {
+        try {
+            return productRepository.getProductByProductCode(productCode);
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

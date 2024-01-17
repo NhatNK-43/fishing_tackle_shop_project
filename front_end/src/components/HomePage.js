@@ -2,23 +2,38 @@ import {Header} from "./Header";
 import {Footer} from "./Footer";
 import {Carousel} from "./Carousel";
 import {useEffect, useState} from "react";
-import * as productService from "../services/productService"
+import * as productService from "../services/productService";
+import RangeSlider from "./RangeSlider";
 import {Link} from "react-router-dom";
 
 export function HomePage() {
     const [products, setProducts] = useState([]);
+    const [productTypes, setProductTypes] = useState([]);
     const [productTypeName, setProductTypeName] = useState("");
     const [keyword, setKeyword] = useState("");
     const [gtePrice, setGtePrice] = useState("0");
     const [ltePrice, setLtePrice] = useState("90000000");
     const [page, setPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
+    const price = 5000000;
 
-    console.log(products);
+    useEffect(() => {
+        getListProductType();
+    }, []);
 
     useEffect(() => {
         getPageProduct();
     }, [page, productTypeName, gtePrice, ltePrice, keyword]);
+
+
+    const getListProductType = async () => {
+        try {
+            const res = await productService.getListProductType();
+            setProductTypes(res.data)
+        } catch (e) {
+            setProductTypes([]);
+        }
+    }
 
     const getPageProduct = async () => {
         try {
@@ -47,10 +62,21 @@ export function HomePage() {
             <div className="container py-5">
                 <div className="d-flex">
                     <input className="form-control form-control-sm rounded-0 border-dark"
-                           placeholder="Nhập mã khách hàng, tên khách hàng hoặc số diện thoại"
+                           placeholder="Tìm kiếm..."
                            value={keyword} type="text"
                            onChange={event => setKeyword(event.target.value)}
                     />
+                    <select className="rounded-0 ms-3"
+                            onChange={e => setProductTypeName(e.target.value)}>
+                        <option value={""}>Loại sản phẩm</option>
+                        {
+                            productTypes.map(pt => (
+                                <option value={pt.name} key={pt.id}>
+                                    {pt.name}
+                                </option>
+                            ))
+                        }
+                    </select>
 
                     <button className="btn btn-outline-dark btn-sm rounded-0 border-1 ms-3"><i
                         className="bi bi-search"></i>
@@ -66,18 +92,20 @@ export function HomePage() {
                     <div className="row">
                         {
                             products.map(p => (
-                                <div className="col-lg-4 col-md-6 mb-4">
+                                <div className="col-lg-3 col-md-6 col-sm-6 mb-4" key={p.productCode}>
 
                                     <div className="card">
                                         <div
                                             className="bg-image hover-zoom ripple"
                                             data-mdb-ripple-color="light"
                                         >
-                                            <img
-                                                src={handleImageSet(p.imageSet)[0]}
-                                                className="w-100"
-                                             alt={"product-image"}/>
-                                            <a href="/product-detail">
+
+                                            <Link to={`/product-detail/${p.productCode}`}>
+                                                {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
+                                                <img
+                                                    src={handleImageSet(p.imageSet)[0]}
+                                                    className="w-100"
+                                                    alt={"product-image"}/>
                                                 {/*<div className="mask">*/}
                                                 {/*    <div className="d-flex justify-content-start align-items-end h-100">*/}
                                                 {/*        <h5>*/}
@@ -93,16 +121,19 @@ export function HomePage() {
                                                 {/*        style={{backgroundColor: "rgba(251, 251, 251, 0.15)"}}*/}
                                                 {/*    />*/}
                                                 {/*</div>*/}
-                                            </a>
+                                            </Link>
                                         </div>
                                         <div className="card-body">
-                                            <a href="" className="text-reset">
+                                            <Link to={`/product-detail/${p.productCode}`} className="text-reset product-name">
                                                 <h5 className="card-title mb-3">{p.name}</h5>
-                                            </a>
+                                            </Link>
                                             <a href="" className="text-reset">
                                                 <p>{p.manufacturer}</p>
                                             </a>
-                                            <h6 className="mb-3">$61.99</h6>
+                                            <h6 className="mb-3">{parseFloat(p.priceSet.split(",")[0]).toLocaleString("vi-VN", {
+                                                style: 'currency',
+                                                currency: 'VND',
+                                            })}</h6>
                                         </div>
                                     </div>
                                 </div>

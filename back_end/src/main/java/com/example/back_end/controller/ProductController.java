@@ -45,4 +45,13 @@ public class ProductController {
         }
         return new ResponseEntity<>(productDtoPage, HttpStatus.OK);
     }
+
+    @GetMapping("/details")
+    public ResponseEntity<IProductDto> getProductByProductCode(@RequestParam(name = "productCode") String productCode){
+        IProductDto productDto = productService.getProductByProductCode(productCode);
+        if (productDto==null){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(productDto,HttpStatus.OK);
+    }
 }
