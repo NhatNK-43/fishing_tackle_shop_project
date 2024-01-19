@@ -296,3 +296,51 @@ VALUES
 (3,'2','2','3'),
 (4,'1','35','7'),
 (5,'1','2','9');
+
+
+select p.product_code as productCode, p.name, p.description, p.manufacturer, pt.name as productTypeName, pm.percent as promotion
+  	,group_concat(distinct i.path_image) as imageSet, group_concat(distinct sd.price) as priceSet, group_concat(distinct s.name) as sizeNameSet
+	from products p 
+	join product_types pt on p.product_type_id = pt.id 
+	join promotions pm on p.promotion_id = pm.id 
+	join size_details sd on p.id = sd.product_id
+	join sizes s on s.id = sd.size_id
+	join images i on i.product_id = p.id
+	where p.product_code = 'TAG03570' and p.is_deleted = 0
+	and pt.name like '%%'
+            and (sd.price between 0.0 and 90000000) 
+            and (p.name like "%%" or p.manufacturer like "%%")
+            group by p.product_code;
+
+select p.product_code as productCode, p.name, p.description, p.manufacturer, pt.name as productTypeName, pm.percent as promotion, group_concat(distinct sd.id) as sizeDetailIdSet
+  	,group_concat(distinct i.path_image) as imageSet, group_concat(distinct sd.price) as priceSet, group_concat(distinct s.name) as sizeNameSet
+	from products p 
+	join product_types pt on p.product_type_id = pt.id 
+	join promotions pm on p.promotion_id = pm.id 
+	join size_details sd on p.id = sd.product_id
+	join sizes s on s.id = sd.size_id
+	join images i on i.product_id = p.id
+	where p.product_code = 'TAG03570' and p.is_deleted = 0
+    group by p.product_code;
+
+select a.id as accountId, c.id as cartId, sd.id as sizeDetailId, p.product_code as productCode, c.quantity, sd.price, s.name as sizeName, p.name, pm.percent as promotion, group_concat(distinct i.path_image) as imageSet
+from carts c 
+join accounts a on c.account_id = a.id
+join size_details sd on c.size_detail_id = sd.id
+join products p on sd.product_id = p.id
+join images i on i.product_id = p.id
+join promotions pm on p.promotion_id = pm.id
+join sizes s on s.id = sd.size_id
+where a.username = "sonht@gmail.com"
+group by p.product_code, s.name, sd.price, c.quantity, c.id;
+
+insert into carts(quantity, account_id, size_detail_id)
+value (2,2,13);
+
+update carts 
+set quantity = quantity + 2
+where account_id = 2 and size_detail_id = 1;
+
+update carts 
+set quantity = 5, size_detail_id = 8
+where id = 6;

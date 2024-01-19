@@ -1,9 +1,78 @@
 import {Footer} from "./Footer";
 import {Header} from "./Header";
+import {useEffect, useState} from "react";
+import * as cartService from "../services/cartService";
+import * as util from "../services/utils/util";
+import {formatCurrency} from "../services/utils/util";
+import {Link} from "react-router-dom";
 
-export  function Cart(){
+export function Cart() {
+    const payload = util.getPayload();
+    const [carts, setCarts] = useState();
+    const [idDelete, setIdDelete] = useState();
+    const [quantityUpdate, setQuantityUpdate] = useState(0);
 
-    return(
+    useEffect(() => {
+        getCart();
+    }, []);
+    const getCart = async () => {
+        try {
+            const res = await cartService.getCart(payload.sub);
+            setCarts(res.data);
+        } catch (e) {
+            setCarts([]);
+        }
+    }
+
+    const updateProductInCart = async (cart) => {
+        try {
+            await cartService.updateProductInCart(cart);
+            await getCart();
+        } catch (e) {
+            setCarts([]);
+        }
+    }
+
+    const handleDelete = async (id) => {
+        const res = await cartService.deleteProductInCart(id)
+        if (res.status===200){
+            await getCart();
+        }
+    }
+
+    const handleCartDto = (cart) => {
+        return {
+            id: cart.cartId,
+            quantity: cart.quantity,
+            accountId: cart.accountId,
+            sizeDetailId: cart.sizeDetailId
+        }
+    }
+    const handleQuantityTrash = async (item) => {
+        await updateProductInCart({
+            ...handleCartDto(item),
+            quantity: item.quantity - 1
+        });
+    }
+
+    const handleQuantityPlus = async (item) => {
+        await updateProductInCart(
+            {
+                ...handleCartDto(item),
+                quantity: item.quantity + 1
+            }
+        );
+    }
+
+    if (!carts) {
+        return null;
+    }
+
+    const handleTotal = carts.reduce((sum, item) => {
+        return sum + item.quantity * item.price * (1 - item.promotion)
+    }, 0);
+
+    return (
         <>
             <Header/>
             {/*<section className="h-100 gradient-custom">*/}
@@ -260,12 +329,105 @@ export  function Cart(){
             {/*        </div>*/}
             {/*    </div>*/}
             {/*</section>*/}
-            <div className="row">
-                <div className="col-lg-9">
-
-                </div>
-                <div className="col-lg-3">
-
+            <div className="container-xxl" style={{fontSize: "16px"}}>
+                <div className="row">
+                    <div className="col-lg-12">
+                        <div className="shadow d-flex align-items-center mt-3 p-2" style={{height: "50px"}}>
+                            <h5 className="text-primary text-center">Giỏ hàng - {carts.length} sản phẩm</h5>
+                        </div>
+                        <table className="table shadow">
+                            <thead className="table-primary">
+                            <tr>
+                                <th><input type="checkbox" className="form-check-input"/></th>
+                                <th scope="col" className="col-4">Sản phẩm</th>
+                                <th className="text-center">Phân loại</th>
+                                <th className="text-center">Đơn giá</th>
+                                <th className="text-center">Số lượng</th>
+                                <th className="text-center">Thành tiền</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody className="align-text-top">
+                            {
+                                carts.map((item, index) => (
+                                    <tr>
+                                        <td><input type="checkbox" className="form-check-input"/></td>
+                                        <td>
+                                            <div className="row">
+                                                <div className="col-3">
+                                                    <img src={item.imageSet.split(",")[0]} alt="image-product"
+                                                         className="w-100"/>
+                                                </div>
+                                                <div className="col-9 d-flex align-items-center">
+                                                    <Link to={`/product-detail/${item.productCode}`}
+                                                          className="product-name text-decoration-underline text-dark">
+                                                        {item.name}
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td className="text-center">{item.sizeName}</td>
+                                        <td className="text-center">{formatCurrency(item.price)}</td>
+                                        <td className="text-center">
+                                            <div className="d-flex justify-content-center">
+                                                <button className="btn btn-outline-secondary btn-sm rounded-0"
+                                                        disabled={quantityUpdate < 0}
+                                                        onClick={() => {
+                                                            handleQuantityTrash(item)
+                                                        }}
+                                                ><i
+                                                    className="bi bi-dash"/></button>
+                                                <div style={{width: "40px"}}>
+                                                    <input
+                                                        className="text-center form-control form-control-sm rounded-0 border-secondary"
+                                                        value={item.quantity}/>
+                                                </div>
+                                                <button className="btn btn-outline-secondary btn-sm rounded-0"
+                                                        onClick={() => {
+                                                            handleQuantityPlus(item)
+                                                        }}
+                                                >
+                                                    <i className="bi bi-plus"/></button>
+                                            </div>
+                                        </td>
+                                        <td className="text-center fw-semibold">{formatCurrency(item.price * item.quantity * (1 - item.promotion))}</td>
+                                        <td className="text-center">
+                                            <button className="btn btn-outline-light" id="icon-trash"
+                                                onClick={()=>handleDelete(item.cartId)}
+                                            >
+                                                <i className="bi bi-trash fs-5 text-danger"/>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="col-lg-12">
+                        <div className="shadow-2-primary d-flex align-items-center mt-3 p-2" style={{height: "50px"}}>
+                            <h5 className="text-primary">Thanh toán</h5>
+                        </div>
+                        <div className="shadow d-flex justify-content-between p-2 align-items-center">
+                            <div>
+                                <input type="checkbox" className="form-check-input me-3"/>Chọn tất cả
+                            </div>
+                            <strong className="">Tổng tạm tính (? sản phẩm)</strong>
+                            <div>
+                                <span className="text-danger fw-bold me-4">{formatCurrency(handleTotal)}</span>
+                                <button className="btn btn-danger rounded-0">Thanh toán</button>
+                            </div>
+                        </div>
+                    </div>
+                    {/*<div className="col-lg-3">*/}
+                    {/*    <div className="shadow-2-primary d-flex align-items-center mt-3 p-2" style={{height: "50px"}}>*/}
+                    {/*        <h5 className="text-primary">Thanh toán</h5>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="shadow d-flex justify-content-between p-2">*/}
+                    {/*        <span className="">Tổng tạm tính</span>*/}
+                    {/*        <span className="">{formatCurrency(handleTotal)}</span>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
             </div>
             <Footer/>

@@ -17,6 +17,7 @@ export function HomePage() {
     const [totalPages, setTotalPages] = useState(0);
     const price = 5000000;
 
+    console.log(products)
     useEffect(() => {
         getListProductType();
     }, []);
@@ -39,7 +40,6 @@ export function HomePage() {
         try {
             const res = await productService.getPageProduct(page, productTypeName, gtePrice, ltePrice, keyword)
             setProducts(res.data.content);
-            setTotalPages(res.data.totalPages);
         } catch (e) {
             setProducts([]);
             setTotalPages(0);

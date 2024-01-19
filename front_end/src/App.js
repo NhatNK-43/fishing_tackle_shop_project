@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {HomePage} from "./components/HomePage";
@@ -10,8 +9,6 @@ import {ToastContainer} from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "../src/css/style.css"
-import "mdb-ui-kit/css/mdb.min.css";
-import "mdb-ui-kit/js/mdb.umd.min";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 import "react-toastify/dist/ReactToastify.min.css";
 import {Header} from "./components/Header";

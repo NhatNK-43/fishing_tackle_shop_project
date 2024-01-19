@@ -4,3 +4,47 @@
     overflow: hidden;
     -webkit-line-clamp: 2;
 }
+#carouselIndicators .carousel-control-next, #carouselIndicators .carousel-control-prev{
+    width: 32px;
+    margin: 12px 0;
+}
+
+#carouselExampleIndicators .bi, #carouselExampleIndicators .bi{
+    opacity: 0.25;
+    height: 90px;
+    width: 32px;
+    border-radius: 2%;
+    text-align: center;
+    line-height: 90px;
+}
+
+#carouselExampleIndicators .carousel-control-next, #carouselExampleIndicators .carousel-control-prev{
+    width: 50px;
+}
+
+#carouselExampleIndicators .bi:hover, #carouselExampleIndicators .bi:hover{
+    opacity: 0.9;
+}
+
+#icon-trash:hover {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px) rotate(-5deg);
+    }
+    50% {
+        transform: translateX(5px) rotate(5deg);
+    }
+    75% {
+        transform: translateX(-5px) rotate(-5deg);
+    }
+}
+
+#main .hover:hover{
+    border: 1px solid red;
+}

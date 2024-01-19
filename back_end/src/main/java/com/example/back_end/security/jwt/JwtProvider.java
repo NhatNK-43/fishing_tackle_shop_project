@@ -27,6 +27,7 @@ public class JwtProvider {
         claims.put("roles", accountPrinciple.getAuthorities());
         return Jwts.builder()
                 .setSubject(accountPrinciple.getUsername())
+                .claim("id",accountPrinciple.getId())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime() + jwtExpiration * 1000))
                 .signWith(key(), SignatureAlgorithm.HS256)

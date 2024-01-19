@@ -47,7 +47,7 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
                                      @Param("ltePrice") Double ltePrice,
                                      @Param("keyword") String keyword);
 
-    @Query(value = "select p.product_code as productCode, p.name, p.description, p.manufacturer, pt.name as productTypeName, \n" +
+    @Query(value = "select p.product_code as productCode, p.name, p.description, p.manufacturer, pt.name as productTypeName, group_concat(distinct sd.id) as sizeDetailIdSet,\n" +
             "pm.percent as promotion, group_concat(distinct i.path_image) as imageSet, group_concat(distinct sd.price) as priceSet, \n" +
             "group_concat(distinct s.name) as sizeNameSet\n" +
             "from products p \n" +

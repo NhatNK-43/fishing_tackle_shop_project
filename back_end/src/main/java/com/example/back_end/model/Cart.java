@@ -1,5 +1,6 @@
 package com.example.back_end.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class Cart {
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "size_detail_id", referencedColumnName = "id")
     private SizeDetail sizeDetail;
